@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -122,7 +123,7 @@ USE_TZ = True
 
 
 STATIC_URL = '/static/'
-
+STATICFILES_DIR = [('main', os.path.join(BASE_DIR, 'main/static'))]
 LOGIN_URL= 'login'
 LOGIN_REDIRECT_URL = 'main'
 LOGOUT_REDIRECT_URL = 'main'
