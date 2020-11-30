@@ -11,5 +11,6 @@ urlpatterns = [
     path('help', views.help, name="help"),
     path('privacy', views.privacy, name="privacy"),
     path('terms', views.terms, name="terms"),
+    path('search', views.search, name="search"),
     #path('item_view/<str:pk>', views.ItemDetailView.as_view(), name="item_view"),
 ]
