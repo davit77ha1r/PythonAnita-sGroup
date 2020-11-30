@@ -37,7 +37,8 @@
 			<div class="contact agileits">
 				<div class="contact-agileinfo">
 					<div class="contact-form wthree">
-						<form action="#" method="post">
+						<form action="\contact" method="POST">
+							{% csrf_token %}
 							<div class="">
 								<input type="text" name="name" placeholder="Name" required="">
 							</div>
@@ -50,9 +51,7 @@
 							<div class="">
 								<textarea placeholder="Message" name="message" required=""></textarea>
 							</div>
-							<a>
 							<input type="submit" value="Submit">
-							</a>
 						</form>
 					</div>
 					<div class="contact-right wthree">
