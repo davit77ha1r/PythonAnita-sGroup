@@ -4,7 +4,7 @@ import smtplib as root
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
-
+CATEGORIES = {"kitchen":7, "candy":6, "fish":5, "fruits":4, "juice":3, "souse":2, "pasta":1}
 
 # Create your views here.
 
@@ -50,10 +50,15 @@ def privacy(request):
 def terms(request):
     return render(request, "main/terms.html")
 def search(request):
-    items = Item.objects.all()
-    content = {"items": items}
+    kitchen_list = ['kitchen','kitche','kitch','knife','plate','cup']
+    if request.method == 'POST':
+        search = request.POST.get('search')
+        if search == "":
+            items = Item.objects.all()
+            content = {"items": items}
+            return render(request, "main/search.html", content)
+        else:
+            items = Item.objects.filter(category=CATEGORIES[search])
+            content = {"items": items}
+            return render(request, "main/search.html", content)
     return render(request, "main/search.html", content)
-def submited(request):
-
-
-        return render(request, 'main/submited.html')

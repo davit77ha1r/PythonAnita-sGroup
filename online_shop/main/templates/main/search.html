@@ -1,5 +1,6 @@
 {% extends 'main/base.html' %}
 	{% load static %}
+	{% load django_template_maths %}
 	{% block content %}
 <style>
 	del {
@@ -31,9 +32,9 @@
 									<br>
 									<h5 class="discount">Discount {{ item.discount }}%</h5>
 									<div class="info-product-price">
-										<span class="item_price">${{ item.price }} </span>
-										<del>${{ item.price|add:110 }}</del>
+										<span class="item_price">${{  item.disc  }} </span>
 
+										<del>${{ item.price }}</del>
 									</div>
 									<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
 										<form action="#" method="post">
