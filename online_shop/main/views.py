@@ -50,15 +50,16 @@ def privacy(request):
 def terms(request):
     return render(request, "main/terms.html")
 def search(request):
-    kitchen_list = ['kitchen','kitche','kitch','knife','plate','cup']
     if request.method == 'POST':
         search = request.POST.get('search')
         if search == "":
             items = Item.objects.all()
             content = {"items": items}
-            return render(request, "main/search.html", content)
+            return render(request, "main/search.html", content, search)
         else:
-            items = Item.objects.filter(category=CATEGORIES[search])
-            content = {"items": items}
+            items = Item.objects.all()
+            content = {"items": items,"search": search}
             return render(request, "main/search.html", content)
     return render(request, "main/search.html", content)
+def checkout(request):
+    return render(request, "main/checkout.html")

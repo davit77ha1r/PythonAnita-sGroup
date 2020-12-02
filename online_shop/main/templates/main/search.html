@@ -12,6 +12,7 @@
 </style>
 <div class="product-sec1">
 						{%  for item in items %}
+						{% if search in item.name or search in item.brand or search in item.tags or search in item.description or search in item.category or search in item.color or search in item.status or search in item.ref_num %}
 						<div class="col-md-4 product-men">
 							<div class="men-pro-item simpleCart_shelfItem">
 								<div class="men-thumb-item">
@@ -56,6 +57,7 @@
 								</div>
 							</div>
 						</div>
+						{% endif %}
 						{% endfor %}
 
 						<div class="clearfix"></div>

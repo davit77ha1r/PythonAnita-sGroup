@@ -12,4 +12,5 @@ urlpatterns = [
     path('privacy', views.privacy, name="privacy"),
     path('terms', views.terms, name="terms"),
     path('search', views.search, name="search"),
+    path('checkout', views.checkout, name="checkout"),
 ]

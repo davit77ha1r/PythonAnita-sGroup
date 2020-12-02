@@ -24,6 +24,7 @@ class Item(models.Model):
 	list_1 = ['product']
 	name = models.CharField(max_length = 150)
 	brand = models.ForeignKey(Brand, on_delete = models.CASCADE)
+	tags = models.TextField(blank = True)
 	description = models.TextField(blank = True)
 	item_image = models.ImageField(default="/media/no_image.jpg",  upload_to = 'media')
 	category = models.ForeignKey(Category, on_delete = models.CASCADE)
@@ -35,6 +36,7 @@ class Item(models.Model):
 	def disc(self):
 		answer = round(self.price*(1-self.discount/100), 2)
 		return answer
+
 	def __str__(self):
 		return self.name
 
