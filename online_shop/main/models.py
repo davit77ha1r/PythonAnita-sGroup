@@ -16,7 +16,6 @@ class Category(models.Model):
 		return self.name
 class Brand(models.Model):
 	name = models.CharField(max_length = 60)
-
 	def __str__(self):
 		return self.name
 

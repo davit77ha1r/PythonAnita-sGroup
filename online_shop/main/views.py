@@ -97,3 +97,9 @@ def checkout(request):
     if request.method == 'POST':
         send_mail_name(request)
     return render(request, "main/checkout.html")
+
+def error_404(request, exception):
+    return render(request,'main/404.html')
+
+def error_500(request):
+    return render(request,'main/404.html')

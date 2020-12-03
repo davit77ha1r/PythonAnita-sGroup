@@ -1,6 +1,6 @@
-from django.http import HttpResponse
 from django.urls import path, include
 from . import views
+
 
 urlpatterns = [
     path('', views.main, name="main"),
@@ -14,3 +14,4 @@ urlpatterns = [
     path('search', views.search, name="search"),
     path('checkout', views.checkout, name="checkout"),
 ]
+
