@@ -84,14 +84,9 @@ def search(request):
         send_mail_name(request)
     if request.method == 'POST':
         search = request.POST.get('search')
-        if search == "":
-            items = Item.objects.all()
-            content = {"items": items}
-            return render(request, "main/search.html", content, search)
-        else:
-            items = Item.objects.all()
-            content = {"items": items,"search": search}
-            return render(request, "main/search.html", content)
+        items = Item.objects.all()
+        content = {"items": items,"search": search}
+        return render(request, "main/search.html", content)
     return render(request, "main/search.html", content)
 def checkout(request):
     if request.method == 'POST':
