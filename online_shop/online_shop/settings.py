@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_template_maths',
     'main',
-    'users',
+    'users.apps.UsersConfig',
     'crispy_forms',
 ]
 

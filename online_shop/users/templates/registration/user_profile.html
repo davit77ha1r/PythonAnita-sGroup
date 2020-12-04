@@ -1,0 +1,12 @@
+{% extends 'main/base.html' %}
+	{% block content %}
+	<div class="profile">
+	<h3>Profile</h3>
+		<strong>Name: {{profile.user.username}}</strong>
+		<br>
+		<strong>Age: {{profile.age}}</strong>
+		<br>
+		<strong>Adress: {{profile.adress}}</strong>
+
+	</div>
+{% endblock %}

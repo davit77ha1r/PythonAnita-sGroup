@@ -1,5 +1,5 @@
-from django.shortcuts import render, redirect
-from .models import Item
+from django.shortcuts import render, redirect, get_object_or_404
+from .models import Item, OrderItem
 import smtplib as root
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
@@ -98,3 +98,18 @@ def error_404(request, exception):
 
 def error_500(request):
     return render(request,'main/404.html')
+def add_to_cart(request, pk):
+    item = get_object_or_404(Item, pk = item.id)
+    order_item = OrderItem.objects.get_or_create(item = item)
+    order_qs = Order.objects.filter(user = request.user, ordered = False)
+    if order_qs.exists():
+        order = order_qs[0]
+        if order.items.filter(item_pk = item.id).exists():
+            order_item.quantity += 1
+            order_item.save()
+        else:
+            order.item.add(order_item)
+    else:
+        order = Order.objects.create(user = request.user)
+        order.items.add(order_item)
+    return render(request, 'main/checkout.html', pk = id)

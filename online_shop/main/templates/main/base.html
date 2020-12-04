@@ -68,6 +68,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<a href="{% url 'login' %}" data-toggle="modal" data-target="#myModal1">
 							<span class="fa fa-unlock-alt" aria-hidden="true"></span> Sign In </a>
 					{% else %}
+						<li><a href="{% url 'user_profile' %}"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
 					</li>
 					<li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
 					{% endif %}

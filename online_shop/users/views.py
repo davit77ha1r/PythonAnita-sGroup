@@ -30,3 +30,8 @@ def register(request):
             messages.add_message(request, messages.WARNING, "User is not created successfully")
 
     return render(request, 'registration/user_register.html', {'form': form})
+
+@login_required(login_url="login")
+def user_profile(request):
+    profile = Profile.objects.get(user_id = request.user.id)
+    return render(request, "registration/user_profile.html", {"profile":profile})

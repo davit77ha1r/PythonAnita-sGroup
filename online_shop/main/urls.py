@@ -13,5 +13,6 @@ urlpatterns = [
     path('terms', views.terms, name="terms"),
     path('search', views.search, name="search"),
     path('checkout', views.checkout, name="checkout"),
+    path('checkout', views.add_to_cart, name="add_to_cart"),
 ]
 
