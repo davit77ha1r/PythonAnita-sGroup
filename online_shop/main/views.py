@@ -51,6 +51,11 @@ def main(request):
 def index_page(request):
     if request.method == 'POST':
         send_mail_name(request)
+    if request.method == "POST":
+        item = Item.objects.all().filter(id=pk)[0]
+        smitem = Item.objects.all().filter(category=item.category)
+        content = {'item': item, 'smitem': smitem}
+        return render(request, 'main/single.html', content)
     items = Item.objects.all()
     content = {"items": items}
     return render(request, "main/index.html", content)
@@ -112,4 +117,10 @@ def add_to_cart(request, pk):
     else:
         order = Order.objects.create(user = request.user)
         order.items.add(order_item)
-    return render(request, 'main/checkout.html', pk = id)
+    return render(request, 'main/checkout.html', pk = OrderItem.id)
+
+def item_view(request, pk):
+    item = Item.objects.all().filter(id=pk)[0]
+    smitem = Item.objects.all().filter(category=item.category)
+    content = {'item': item, 'smitem': smitem}
+    return render(request, 'main/single.html', content)

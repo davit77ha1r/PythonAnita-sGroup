@@ -1,5 +1,6 @@
 from django.db import models
 from django.db.models import CharField, Model
+from django.contrib.auth.models import User
 from django_mysql.models import ListCharField
 
 
@@ -38,3 +39,16 @@ class Item(models.Model):
 	def __str__(self):
 		return self.name
 
+class OrderItem(models.Model):
+	user = models.ManyToManyField(User, blank=True, null=True)
+	ordered = models.BooleanField(default = False)
+	quantity = models.IntegerField(default = 1)
+	def __str__(self):
+		return self.item
+
+class Order(models.Model):
+	user = models.ForeignKey(User, on_delete = models.CASCADE)
+	items = models.ManyToManyField(OrderItem)
+	ordered = models.BooleanField(default = False)
+	def __str__(self):
+		return self.items
