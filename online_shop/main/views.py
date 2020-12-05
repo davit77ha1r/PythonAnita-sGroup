@@ -7,7 +7,7 @@ from email.mime.multipart import MIMEMultipart
 CATEGORIES = {"kitchen":7, "candy":6, "fish":5, "fruits":4, "juice":3, "souse":2, "pasta":1}
 
 # Create your views here.
-def send_mail(request,):
+def send_mail(request):
     login = 'ourdjangoshop@mail.ru'
     password = '$python333$'
     url = 'smtp.mail.ru'
@@ -49,7 +49,7 @@ def send_mail_name(request):
 def main(request):
     return redirect("/index")
 def index_page(request):
-    if request.method == 'POST':
+    if (request.method == 'POST') and request.POST.get('name') == "send_mail":
         send_mail_name(request)
     if request.method == "POST":
         item = Item.objects.all().filter(id=pk)[0]
@@ -60,32 +60,32 @@ def index_page(request):
     content = {"items": items}
     return render(request, "main/index.html", content)
 def about(request):
-    if request.method == 'POST':
+    if (request.method == 'POST') and request.POST.get('name') == "send_mail":
         send_mail_name(request)
     return render(request, "main/about.html")
 def contact(request):
-    if request.method == 'POST':
-        send_mail(request)
+    if (request.method == 'POST') and request.POST.get('name') == "send_mail":
+        send_mail_name(request)
     return render(request, "main/contact.html")
 
 def shoplocator(request):
-    if request.method == 'POST':
+    if (request.method == 'POST') and request.POST.get('name') == "send_mail":
         send_mail_name(request)
     return render(request, "main/shoplocator.html")
 def help(request):
-    if request.method == 'POST':
+    if (request.method == 'POST') and request.POST.get('name') == "send_mail":
         send_mail_name(request)
     return render(request, "main/help.html")
 def privacy(request):
-    if request.method == 'POST':
+    if (request.method == 'POST') and request.POST.get('name') == "send_mail":
         send_mail_name(request)
     return render(request, "main/privacy.html")
 def terms(request):
-    if request.method == 'POST':
+    if (request.method == 'POST') and request.POST.get('name') == "send_mail":
         send_mail_name(request)
     return render(request, "main/terms.html")
 def search(request):
-    if request.method == 'POST':
+    if (request.method == 'POST') and request.POST.get('name') == "send_mail":
         send_mail_name(request)
     if request.method == 'POST':
         search = request.POST.get('search')
@@ -94,7 +94,7 @@ def search(request):
         return render(request, "main/search.html", content)
     return render(request, "main/search.html", content)
 def checkout(request):
-    if request.method == 'POST':
+    if (request.method == 'POST') and request.POST.get('name') == "send_mail":
         send_mail_name(request)
     return render(request, "main/checkout.html")
 
@@ -103,7 +103,9 @@ def error_404(request, exception):
 
 def error_500(request):
     return render(request,'main/404.html')
-def add_to_cart(request, pk):
+def add_to_cart(request):
+    if (request.method == 'POST') and request.POST.get('name') == "send_mail":
+        send_mail_name(request)
     item = get_object_or_404(Item, pk = item.id)
     order_item = OrderItem.objects.get_or_create(item = item)
     order_qs = Order.objects.filter(user = request.user, ordered = False)
@@ -120,6 +122,8 @@ def add_to_cart(request, pk):
     return render(request, 'main/checkout.html', pk = OrderItem.id)
 
 def item_view(request, pk):
+    if (request.method == 'POST') and request.POST.get('name') == "send_mail":
+        send_mail_name(request)
     item = Item.objects.all().filter(id=pk)[0]
     smitem = Item.objects.all().filter(category=item.category)
     content = {'item': item, 'smitem': smitem}

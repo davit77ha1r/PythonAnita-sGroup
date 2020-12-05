@@ -633,7 +633,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="col-xs-8 agile-leftmk">
 				<h2>Subscribe for getting notifications from our shop</h2>
 				<p>Be informed!</p>
-				<form action="" method="post">
+				<form action="" method="post" name="send_mail">
 					{% csrf_token %}
 					<input type="email" placeholder="E-mail" name="email" required="">
 					<input type="submit" value="Subscribe">
