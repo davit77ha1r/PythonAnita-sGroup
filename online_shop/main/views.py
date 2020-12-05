@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Item, OrderItem
+from .models import Item
 import smtplib as root
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
