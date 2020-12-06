@@ -12,8 +12,13 @@ urlpatterns = [
     path('privacy', views.privacy, name="privacy"),
     path('terms', views.terms, name="terms"),
     path('search', views.search, name="search"),
-    path('checkout', views.checkout, name="checkout"),
-    path('checkout', views.add_to_cart, name="add_to_cart"),
-    path('<str:pk>', views.item_view, name="product_view"),
+    path('products', views.products, name="products"),
+    # path('checkout', views.checkout, name="checkout"),
+    path('checkout', views.cart_view, name="cart_view"),
+    path('minus/<int:pk>', views.minus, name="minus"),
+    path('plus/<int:pk>', views.plus, name="plus"),
+    path('add_to_cart/<str:pk>', views.add_to_cart, name="add_to_cart"),
+    path('remove/<str:pk>', views.remove, name="remove"),
+    path('/<str:pk>', views.item_view, name="product_view"),
 ]
 
